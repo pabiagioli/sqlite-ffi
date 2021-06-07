@@ -1,0 +1,32 @@
+name: sqlite3
+version: 0.0.1
+description: >-
+  Multi-Platform Sqlite3 Dart FFI Bindings
+author: Pablo Biagioli <pabiagioli@gmail.com>
+environment:
+  sdk: '>=2.12.0-0 <3.0.0'
+dependencies:
+  ffi: ^1.1.2
+  rxdart: ^0.27.1
+
+dev_dependencies:
+  test: ^1.17.5
+  ffigen: ^3.0.0
+
+ffigen:
+  name: SQLite3
+  description: Bindings to `headers/sqlite3.h`.
+  output: 'lib/src/bindings/sqlite3.ffi.dart'
+  comments:
+    style: 'any'
+    length: 'full'
+  headers:
+    entry-points:
+      - 'headers/sqlite3.h'
+    include-directives:
+      - '**sqlite3.h'
+  functions:
+    exclude:
+      - sqlite3_vmprintf
+      - sqlite3_vsnprintf
+      - sqlite3_str_vappendf
